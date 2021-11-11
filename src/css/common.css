@@ -16,3 +16,29 @@ img {
   display: block;
   max-width: 100%;
 }
+.value {
+  color: red;
+}
+.label {
+  color: blue;
+}
+button[data-start] {
+  padding: 10px 20px;
+  color:chocolate;
+  font-size: 18px;
+}
+button[data-stop] {
+   padding: 10px 20px;
+  color:chocolate;
+  font-size: 18px;
+}
+#datetime-picker {
+  width: 300px;
+  margin-left: 30px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.field {
+  display: inline;
+  margin-left: 30px;
+}
