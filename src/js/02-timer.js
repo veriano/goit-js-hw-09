@@ -23,7 +23,12 @@ const options = {
 
 flatpickr(input, options);
 
-startBtn.addEventListener('click', convertMs);
+const timer = {
+  start() {
+    const
+  }
+}
+
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
