@@ -4,6 +4,10 @@ import Notiflix from 'notiflix';
 
 const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
+const days = document.querySelector('span[data-days]');
+const hours = document.querySelector('span[data-hours]');
+const minutes = document.querySelector('span[data-minutes]');
+const seconds = document.querySelector('span[data-seconds]');
 startBtn.setAttribute('disabled', 'disabled');
 
 const options = {
@@ -13,21 +17,43 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     const date = options.defaultDate;
+   
     if (selectedDates[0] < date) {
      Notiflix.Notify.failure( "Please choose a date in the future");
     } else {
       startBtn.removeAttribute('disabled');
     }
-  },
-};
+
+    startBtn.addEventListener('click', onStartBtnClick);
+
+    function onStartBtnClick() {
+        const startTime = selectedDates[0];
+        let intervalId = null;
+          intervalId = setInterval(() => {
+          const currentTime = Date.now();
+          const deltaTime =  startTime - currentTime;
+           const timeComponents = convertMs(deltaTime);
+          
+          days.textContent = addLeadingZero(timeComponents.days);
+          hours.textContent = addLeadingZero(timeComponents.hours);
+          minutes.textContent = addLeadingZero(timeComponents.minutes);
+          seconds.textContent = addLeadingZero(timeComponents.seconds);
+        }, 1000);
+        if (deltaTime < 1000){
+          clearInterval(intervalId);
+        }
+      }
+      
+    }
+  };
+  
+
 
 flatpickr(input, options);
 
-const timer = {
-  start() {
-    const
-  }
-}
+function addLeadingZero(value) {
+  return String(value).padStart(2,'0');
+};
 
 
 function convertMs(ms) {
