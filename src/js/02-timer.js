@@ -31,7 +31,11 @@ const options = {
         let intervalId = null;
           intervalId = setInterval(() => {
           const currentTime = Date.now();
-          const deltaTime =  startTime - currentTime;
+            let deltaTime = startTime - currentTime;
+            if (deltaTime < 1000) {
+          clearInterval(intervalId);
+        }
+            console.log(deltaTime);
            const timeComponents = convertMs(deltaTime);
           
           days.textContent = addLeadingZero(timeComponents.days);
@@ -39,9 +43,6 @@ const options = {
           minutes.textContent = addLeadingZero(timeComponents.minutes);
           seconds.textContent = addLeadingZero(timeComponents.seconds);
         }, 1000);
-        if (deltaTime < 1000){
-          clearInterval(intervalId);
-        }
       }
       
     }
