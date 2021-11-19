@@ -34,8 +34,7 @@ const options = {
             let deltaTime = startTime - currentTime;
             if (deltaTime < 1000) {
           clearInterval(intervalId);
-        }
-            console.log(deltaTime);
+          }
            const timeComponents = convertMs(deltaTime);
           
           days.textContent = addLeadingZero(timeComponents.days);
